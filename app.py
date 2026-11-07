@@ -7,9 +7,5 @@ DOCUMENTS = {
 
 
 def get_document(authenticated_user, document_id):
-    """Look up a document for a previously authenticated caller.
-
-    Deliberate flaw: the caller's identity is not checked against the owner.
-    This is a self-contained teaching fixture, not a deployable service.
-    """
+    """Look up a document for a previously authenticated caller."""
     return DOCUMENTS.get(document_id)
