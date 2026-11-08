@@ -2,6 +2,8 @@
 
 This intentionally vulnerable teaching application uses fictional organizations, users, tokens, and invoices. It simulates authentication and stores data in a local SQLite database. Run it locally only; do not deploy it or use real data.
 
+For the hypothetical production scenario and its intended access boundary, see [THREAT_MODEL.md](THREAT_MODEL.md).
+
 ```sh
 python3 -m venv .venv
 . .venv/bin/activate
