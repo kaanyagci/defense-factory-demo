@@ -6,7 +6,7 @@ from app import get_document
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Look up a mock document (intentionally vulnerable demo).")
+    parser = argparse.ArgumentParser(description="Look up a document.")
     parser.add_argument("--user", default="alice", help="Simulated authenticated user")
     parser.add_argument("--document", default="report-1", help="Mock document ID")
     args = parser.parse_args()
