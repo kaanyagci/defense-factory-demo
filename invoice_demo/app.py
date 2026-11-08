@@ -1,4 +1,4 @@
-"""Local demonstration service for exporting mock invoices."""
+"""Invoice export API."""
 from flask import Flask, Response, abort
 from auth import require_organization_member
 from export_service import invoice_csv

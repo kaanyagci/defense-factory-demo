@@ -1,9 +1,5 @@
-# Invoice service: product context
+# Invoice service security boundaries
 
-This document describes a hypothetical hosted invoice portal. The application in this repository is a local prototype using fictional records and mock tokens; it is not deployed as the hosted service described below.
+The invoice service holds billing records for multiple customer organizations. Invoices include customer names and billing amounts. Each user has an individual API credential, and organization membership controls access to that organization's invoice exports. Users must not be able to access invoices belonging to another organization.
 
-Imagine a hosted invoice portal serving many customer organizations. Each organization stores invoices containing customer names, amounts, and other confidential billing details. Signed-in members can export invoices belonging to their own organization. A production identity provider would establish each user's identity; organization membership would determine which invoices that user may access.
-
-Each organization manages its own invoices, and signed-in members can export invoices for their organization.
-
-For the local exercise, authentication is simulated by fixed, public demo tokens and the database contains fictional data. The example does not implement a production identity provider or prove that any real service is exposed.
+API credentials are provisioned by administrators and should be delivered securely to their intended users. The service stores credential hashes and persistent invoice records in SQLite. Network deployments should use TLS at a trusted reverse proxy and restrict access to the database and administrative commands.
