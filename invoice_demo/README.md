@@ -1,8 +1,8 @@
 # Invoice export demo
 
-This intentionally vulnerable teaching application uses fictional organizations, users, tokens, and invoices. It simulates authentication and stores data in a local SQLite database. Run it locally only; do not deploy it or use real data.
+This local invoice export application uses fictional organizations, users, tokens, and invoices. It simulates authentication and stores data in a local SQLite database. Use fictional data only.
 
-For the hypothetical production scenario and its intended access boundary, see [THREAT_MODEL.md](THREAT_MODEL.md).
+For the product context, see [THREAT_MODEL.md](THREAT_MODEL.md).
 
 ```sh
 python3 -m venv .venv
