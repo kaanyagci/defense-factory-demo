@@ -21,3 +21,7 @@ curl -H 'Authorization: Bearer <token>' \
 ```
 
 The SQLite database is stored in `data/invoices.sqlite3` by default. Set `INVOICE_DB_PATH` to choose another location. The `seed` command adds example records without overwriting existing invoices.
+
+## Run the service in a container
+
+Build the image from this directory. Mount a persistent volume at `/var/lib/invoices`, provision users with the administrative command, and run the service behind a TLS-terminating reverse proxy. Gunicorn serves the application on port 8000.
