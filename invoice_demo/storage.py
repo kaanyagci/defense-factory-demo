@@ -1,17 +1,20 @@
-"""In-memory SQLite fixture for the invoice export demo."""
+"""Persistent SQLite storage for the invoice export demo."""
 import sqlite3
+from pathlib import Path
 
 
 def create_database():
-    db = sqlite3.connect(":memory:", check_same_thread=False)
+    data_dir = Path(__file__).resolve().parent / "data"
+    data_dir.mkdir(exist_ok=True)
+    db = sqlite3.connect(data_dir / "invoices.sqlite3", check_same_thread=False)
     db.row_factory = sqlite3.Row
     db.executescript("""
-        CREATE TABLE memberships (user_id TEXT NOT NULL, organization_id TEXT NOT NULL,
+        CREATE TABLE IF NOT EXISTS memberships (user_id TEXT NOT NULL, organization_id TEXT NOT NULL,
                                   PRIMARY KEY (user_id, organization_id));
-        CREATE TABLE invoices (id TEXT PRIMARY KEY, organization_id TEXT NOT NULL,
+        CREATE TABLE IF NOT EXISTS invoices (id TEXT PRIMARY KEY, organization_id TEXT NOT NULL,
                                customer TEXT NOT NULL, amount_cents INTEGER NOT NULL);
-        INSERT INTO memberships VALUES ('alice', 'acme'), ('bob', 'globex');
-        INSERT INTO invoices VALUES
+        INSERT OR IGNORE INTO memberships VALUES ('alice', 'acme'), ('bob', 'globex');
+        INSERT OR IGNORE INTO invoices VALUES
             ('inv-100', 'acme', 'Acme sample customer', 12500),
             ('inv-200', 'globex', 'Globex sample customer', 87000);
     """)
