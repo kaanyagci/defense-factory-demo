@@ -1,4 +1,4 @@
-"""A deliberately vulnerable, local-only document lookup demo."""
+"""Document lookup application."""
 
 DOCUMENTS = {
     "report-1": {"owner": "alice", "body": "Alice's planning notes"},
