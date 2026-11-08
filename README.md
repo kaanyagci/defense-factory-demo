@@ -1,13 +1,6 @@
-# Defense factory sample
+# Defense factory samples
 
-This small, intentionally vulnerable Python example is local-only and uses fabricated data. Do not deploy it or put real data in it.
+Small, intentionally vulnerable local examples for exploring security workflows. They contain only fabricated data. Do not deploy them or use real data.
 
-It requires Python 3 and uses only the standard library. Run the example from this directory:
-
-```sh
-python3 demo.py --user alice --document report-1
-```
-
-The `--user` argument simulates an already authenticated caller; it is not authentication.
-
-The function assumes its caller has authenticated the user. No network service or identity provider is included.
+- [Invoice export demo](invoice_demo/README.md): a Flask service for two mock organizations.
+- Original document lookup: run `python3 demo.py --user alice --document report-1`. The identity is simulated and there is no network service or identity provider.
